@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Obten 3 meses al precio de 1</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    :root {
+        --bg-color: #141414;
+        --text-color: #ffffff;
+        --accent-color: #e50914;
+        --muted-color: #b3b3b3;
+        --card-bg: #101010;
+        --error: #ff6b6b;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+        background: url("IMG_6578.jpeg") no-repeat center center fixed;
+        background-size: cover;
+        color: var(--text-color);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding:
+          calc(env(safe-area-inset-top, 0px) + 8px)
+          0
+          2rem
+          calc(env(safe-area-inset-left, 0px) + 8px);
+    }
+
+    @media (max-width: 820px) {
+        body {
+            background-attachment: scroll;
+        }
+    }
+
+    header {
+        text-align: center;
+        padding: 3rem 1rem 1rem;
+    }
+
+    header h1 {
+        color: var(--accent-color);
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    header p {
+        color: var(--muted-color);
+        font-size: 1.2rem;
+    }
+
+    .tiempo-limitado {
+        color: #ffffff;
+        font-weight: bold;
+        animation: parpadeo 1.2s infinite;
+    }
+
+    @keyframes parpadeo {
+        0%,100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    .promo-section {
+        max-width: 520px;
+        margin: 2rem auto;
+        background-color: #1f1f1f;
+        border-radius: 12px;
+        padding: 2.5rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        transition: transform 0.3s ease;
+    }
+
+    .promo-section:hover {
+        transform: scale(1.02);
+    }
+
+    .promo-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+    }
+
+    .promo-section p {
+        margin-bottom: 1rem;
+        color: var(--muted-color);
+        font-size: 1rem;
+    }
+
+    form {
+        margin-top: 0.5rem;
+        text-align: left;
+    }
+
+    .row {
+        display: flex;
+        gap: 0.8rem;
+    }
+
+    .col {
+        flex: 1;
+    }
+
+    label {
+        display:block;
+        font-size: 0.85rem;
+        color: var(--muted-color);
+        margin-bottom: 0.35rem;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 1rem;
+        background-color: var(--card-bg);
+        color: var(--text-color);
+    }
+
+    input::placeholder {
+        color: #8b8b8b;
+    }
+
+    .promo-section button {
+        width: 100%;
+        padding: 0.95rem;
+        background-color: var(--accent-color);
+        border: none;
+        border-radius: 6px;
+        font-size: 1.15rem;
+        font-weight: bold;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .promo-section button:hover {
+        background-color: #b10610;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .hint {
+        font-size: 0.85rem;
+        color: var(--muted-color);
+        margin-bottom: 0.75rem;
+    }
+
+    .feedback {
+        margin-top: 1rem;
+        display:none;
+        font-weight:700;
+    }
+
+    .feedback.error {
+        color: var(--error);
+    }
+
+    .field-error {
+        font-size: 0.8rem;
+        color: var(--error);
+        margin-top: -0.5rem;
+        margin-bottom: 0.75rem;
+        display:none;
+    }
+
+    .small {
+        font-size: 0.8rem;
+        color: var(--muted-color);
+    }
+
+    .security-info {
+        background-color: #181818;
+        padding: 0.9rem 1rem 0.2rem;
+        border-left: 4px solid var(--accent-color);
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        text-align:left;
+    }
+
+    .security-info p {
+        margin: 0 0 0.45rem;
+        color: var(--muted-color);
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem;
+        color: var(--muted-color);
+        font-size: 0.9rem;
+        margin-top: 1.5rem;
+    }
+
+    @media (max-width: 520px) {
+        .row {
+            flex-direction: column;
+        }
+        header h1 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Por Tiempo Limitado</h1>
+    <p>
+        Consigue tu membresía a un precio especial 3 meses al precio de 1 por solo $119. Cancela cuando quieras.
+    </p>
+</header>
+
+<section class="promo-section" aria-labelledby="promo-title">
+    <h2 id="promo-title">¡Únete ahora!</h2>
+    <p class="hint">Rellena tus datos y tu método de pago para obtener tu promoción.</p>
+
+    <form id="promoForm" autocomplete="on" novalidate>
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Nombre completo" required autocomplete="name">
+        <div id="error-nombre" class="field-error">Por favor ingresa tu nombre.</div>
+
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required autocomplete="email">
+        <div id="error-email" class="field-error">Por favor ingresa un correo válido.</div>
+
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" name="telefono" type="tel" placeholder="55 1234 5678" required inputmode="tel" autocomplete="tel">
+        <div id="error-telefono" class="field-error">Por favor ingresa un teléfono válido.</div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07); margin: 10px 0 16px;">
+
+        <div class="security-info" aria-live="polite">
+            <p>Transacciones seguras y confiables.</p>
+            <p>Cancela fácilmente online.</p>
+            <p>Encriptado de extremo a extremo 🔒.</p>
+        </div>
+
+        <label for="cc-number">Número de tarjeta</label>
+        <input id="cc-number" name="cc-number" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456"
+               maxlength="19" autocomplete="cc-number" required aria-describedby="cc-hint">
+        <div id="error-cc-number" class="field-error">Número de tarjeta inválido.</div>
+
+        <div class="row">
+            <div class="col">
+                <label for="cc-exp">Vencimiento (MM/AA)</label>
+                <input id="cc-exp" name="cc-exp" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5"
+                       autocomplete="cc-exp" required>
+                <div id="error-cc-exp" class="field-error">Fecha inválida o tarjeta vencida.</div>
+            </div>
+            <div class="col">
+                <label for="cc-cvv">CVV</label>
+                <input id="cc-cvv" name="cc-cvv" type="password" inputmode="numeric" placeholder="123" maxlength="4"
+                       autocomplete="cc-csc" required>
+                <div id="error-cc-cvv" class="field-error">CVV inválido.</div>
+            </div>
+        </div>
+
+        <p id="cc-hint" class="small">Usa una tarjeta válida.</p>
+
+        <button type="submit">Obtener Promoción</button>
+
+        <p id="feedback-success" class="feedback error" role="status" aria-live="polite">
+            Ocurrió un error, por favor inténtelo de nuevo más tarde.
+        </p>
+    </form>
+</section>
+
+<footer>&copy; 2025 Promoción Exclusiva. Todos los derechos reservados.</footer>
+
+<script>
+const form = document.getElementById('promoForm');
+const feedback = document.getElementById('feedback-success');
+
+const errors = {
+    nombre: document.getElementById('error-nombre'),
+    email: document.getElementById('error-email'),
+    telefono: document.getElementById('error-telefono'),
+    ccNumber: document.getElementById('error-cc-number'),
+    ccExp: document.getElementById('error-cc-exp'),
+    ccCvv: document.getElementById('error-cc-cvv')
+};
+
+function luhnCheck(number) {
+    const digits = number.split('').reverse().map(d => parseInt(d,10));
+    let sum = 0;
+    for(let i=0;i<digits.length;i++){
+        let digit = digits[i];
+        if(i % 2 === 1){
+            digit *= 2;
+            if(digit > 9) digit -= 9;
+        }
+        sum += digit;
+    }
+    return sum % 10 === 0;
+}
+
+function validateExpiry(value) {
+    if(!/^\d{2}\/\d{2}$/.test(value)) return false;
+    const [mm, yy] = value.split('/').map(Number);
+    if(mm < 1 || mm > 12) return false;
+    const now = new Date();
+    const currentYear = now.getFullYear() % 100;
+    const currentMonth = now.getMonth() + 1;
+    if(yy < currentYear) return false;
+    if(yy === currentYear && mm < currentMonth) return false;
+    return true;
+}
+
+// Formato automático de vencimiento
+document.getElementById('cc-exp').addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g,'').slice(0,4);
+    if(v.length > 2) {
+        v = v.slice(0,2) + '/' + v.slice(2);
+    }
+    e.target.value = v;
+});
+
+// Validación en tiempo real al perder foco
+function validateField(field) {
+    const val = field.value.trim();
+    switch(field.id) {
+        case 'nombre':
+            errors.nombre.style.display = val ? 'none' : 'block';
+            break;
+        case 'email':
+            errors.email.style.display = /\S+@\S+\.\S+/.test(val) ? 'none' : 'block';
+            break;
+        case 'telefono':
+            errors.telefono.style.display = /^\d{10,}$/.test(val.replace(/\D/g,'')) ? 'none' : 'block';
+            break;
+        case 'cc-number':
+            const num = val.replace(/\s+/g,'');
+            errors.ccNumber.style.display = (/^\d{13,16}$/.test(num) && luhnCheck(num)) ? 'none' : 'block';
+            break;
+        case 'cc-exp':
+            errors.ccExp.style.display = validateExpiry(val) ? 'none' : 'block';
+            break;
+        case 'cc-cvv':
+            errors.ccCvv.style.display = /^\d{3,4}$/.test(val) ? 'none' : 'block';
+            break;
+    }
+}
+
+['nombre','email','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
+    document.getElementById(id).addEventListener('blur', (e) => validateField(e.target));
+});
+
+// Validación final al enviar
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    feedback.style.display = 'none';
+
+    let valid = true;
+    ['nombre','email','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
+        const field = document.getElementById(id);
+        validateField(field);
+        const err = document.getElementById('error-'+id.replace('cc-','cc'));
+        if(err.style.display === 'block') valid = false;
+    });
+
+    if(valid){
+        feedback.style.display = 'block';
+    }
+});
+</script>
+
+</body>
+</html>
