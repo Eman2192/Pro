@@ -236,6 +236,13 @@
         <label for="email">Correo electrónico</label>
         <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required autocomplete="email">
         <div id="error-email" class="field-error">Por favor ingresa un correo válido.</div>
+        <label for="password">Contraseña</label>
+        <div class="password-wrapper">
+        <input id="password" name="password" type="password" placeholder="Crea tu contraseña"
+         required minlength="6" autocomplete="new-password">
+        <button type="button" id="toggle-password" aria-label="Mostrar u ocultar contraseña">👁️</button>
+        </div>
+        <div id="error-password" class="field-error">La contraseña debe tener al menos 6 caracteres.</div>
 
         <label for="telefono">Teléfono</label>
         <input id="telefono" name="telefono" type="tel" placeholder="55 1234 5678" required inputmode="tel" autocomplete="tel">
