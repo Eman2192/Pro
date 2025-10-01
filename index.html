@@ -436,23 +436,17 @@ form.addEventListener('submit', function(e){
         };
 
         emailjs.send('service_tc4q92e','template_zahm45h', templateParams)
-        .then(function(response) {
+        .then(function() {
             spinner.style.display = 'none';
-            feedback.textContent = "¡Promoción enviada correctamente!";
-            feedback.classList.remove("error");
+            feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
+            feedback.classList.add("error");
             feedback.style.display = 'block';
-            form.reset();
-        }, function(error) {
+        }, function() {
             spinner.style.display = 'none';
             feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
             feedback.classList.add("error");
             feedback.style.display = 'block';
         });
-    }
-});
-</script>
-
-
     }
 });
 </script>
