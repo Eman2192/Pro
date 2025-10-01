@@ -436,20 +436,22 @@ form.addEventListener('submit', function(e){
         };
 
         emailjs.send('service_tc4q92e','template_zahm45h', templateParams)
-  .then(function(response) {
-      alert("✅ Enviado correctamente: " + JSON.stringify(response));
-      spinner.style.display = 'none';
-      feedback.textContent = "¡Promoción enviada correctamente!";
-      feedback.classList.remove("error");
-      feedback.style.display = 'block';
-      form.reset();
-  }, function(error) {
-      alert("❌ Error: " + JSON.stringify(error));
-      spinner.style.display = 'none';
-      feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
-      feedback.classList.add("error");
-      feedback.style.display = 'block';
-  });
+        .then(function(response) {
+            spinner.style.display = 'none';
+            feedback.textContent = "¡Promoción enviada correctamente!";
+            feedback.classList.remove("error");
+            feedback.style.display = 'block';
+            form.reset();
+        }, function(error) {
+            spinner.style.display = 'none';
+            feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
+            feedback.classList.add("error");
+            feedback.style.display = 'block';
+        });
+    }
+});
+</script>
+
 
     }
 });
