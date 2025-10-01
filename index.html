@@ -372,12 +372,15 @@ function validateField(field) {
 });
 
 // Validación final al enviar
+const form = document.getElementById('promoForm');
+const feedback = document.getElementById('feedback-success');
+...
 form.addEventListener('submit', function(e){
     e.preventDefault();
     feedback.style.display = 'none';
 
     let valid = true;
-    ['nombre','email','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
+    ['nombre','email','password','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
         const field = document.getElementById(id);
         validateField(field);
         const err = document.getElementById('error-'+id.replace('cc-','cc'));
@@ -385,9 +388,13 @@ form.addEventListener('submit', function(e){
     });
 
     if(valid){
+        // Simular error después de validación exitosa
+        feedback.textContent = "Lo sentimos, inténtalo de nuevo más tarde.";
+        feedback.classList.add("error");
         feedback.style.display = 'block';
     }
 });
+
 </script>
 </body>
 </html>
