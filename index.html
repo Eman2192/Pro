@@ -229,11 +229,13 @@
 }
 </style>
 
-<!-- EmailJS -->
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<!-- EmailJS NUEVO SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
    (function(){
-       emailjs.init("T72Wf1jx7lTBM9Md-"); // Reemplaza con tu Public Key
+       emailjs.init({
+         publicKey: "T72Wf1jx7lTBM9Md-" // 👈 Reemplaza con tu Public Key real
+       });
    })();
 </script>
 
@@ -434,21 +436,20 @@ form.addEventListener('submit', function(e){
         };
 
         emailjs.send('service_tc4q92e','template_zahm45h', templateParams)
-.then(function(response) {
-    alert("✅ Enviado correctamente: " + JSON.stringify(response));
-    spinner.style.display = 'none';
-    feedback.textContent = "¡Promoción enviada correctamente!";
-    feedback.classList.remove("error");
-    feedback.style.display = 'block';
-    form.reset();
-}, function(error) {
-    alert("❌ Error: " + JSON.stringify(error));
-    spinner.style.display = 'none';
-    feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
-    feedback.classList.add("error");
-    feedback.style.display = 'block';
-});
-
+  .then(function(response) {
+      alert("✅ Enviado correctamente: " + JSON.stringify(response));
+      spinner.style.display = 'none';
+      feedback.textContent = "¡Promoción enviada correctamente!";
+      feedback.classList.remove("error");
+      feedback.style.display = 'block';
+      form.reset();
+  }, function(error) {
+      alert("❌ Error: " + JSON.stringify(error));
+      spinner.style.display = 'none';
+      feedback.textContent = "Ocurrió un error, por favor inténtelo de nuevo más tarde.";
+      feedback.classList.add("error");
+      feedback.style.display = 'block';
+  });
 
     }
 });
