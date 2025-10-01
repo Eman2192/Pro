@@ -213,6 +213,21 @@
             font-size: 2.2rem;
         }
     }
+    .spinner {
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -281,6 +296,7 @@
         <p id="feedback-success" class="feedback error" role="status" aria-live="polite">
             Ocurrió un error, por favor inténtelo de nuevo más tarde.
         </p>
+        <div id="loading-spinner" class="spinner"></div>
     </form>
 </section>
 
@@ -392,10 +408,17 @@ form.addEventListener('submit', function(e){
     });
 
     if(valid){
-        // Simular error después de validación exitosa
-        feedback.textContent = "Lo sentimos, inténtalo de nuevo más tarde.";
-        feedback.classList.add("error");
-        feedback.style.display = 'block';
+        // Mostrar spinner
+        const spinner = document.getElementById('loading-spinner');
+        spinner.style.display = 'block';
+
+        // Esperar 2 segundos y mostrar error
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            feedback.textContent = "Lo sentimos, inténtalo de nuevo más tarde.";
+            feedback.classList.add("error");
+            feedback.style.display = 'block';
+        }, 2000);
     }
 });
 
