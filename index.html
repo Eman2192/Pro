@@ -327,6 +327,13 @@ document.getElementById('cc-exp').addEventListener('input', function(e){
         v = v.slice(0,2) + '/' + v.slice(2);
     }
     e.target.value = v;
+    errors.ccExp.style.display = validateExpiry(e.target.value) ? 'none' : 'block';
+});
+
+// Validación en tiempo real para CVV
+document.getElementById('cc-cvv').addEventListener('input', function(e){
+    const val = e.target.value.trim();
+    errors.ccCvv.style.display = /^\d{3,4}$/.test(val) ? 'none' : 'block';
 });
 
 // Validación en tiempo real al perder foco
@@ -377,6 +384,5 @@ form.addEventListener('submit', function(e){
     }
 });
 </script>
-
 </body>
 </html>
