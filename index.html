@@ -263,37 +263,38 @@
 
         <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07); margin: 10px 0 16px;">
 
-        <div class="security-info" aria-live="polite">
-            <p>Transacciones seguras y confiables.</p>
-            <p>Cancela fácilmente online.</p>
-            <p>Encriptado de extremo a extremo 🔒.</p>
-        </div>
-        </div>    
+<div class="security-info" aria-live="polite">
+    <p>Transacciones seguras y confiables.</p>
+    <p>Cancela fácilmente online.</p>
+    <p>Encriptado de extremo a extremo 🔒.</p>
+</div>
 
-        <label for="cc-number">Número de tarjeta</label>
-        <div style="display: flex; align-items: center;">
-        <input id="cc-number" name="cc-number" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456"
-         maxlength="19" autocomplete="cc-number" required aria-describedby="cc-hint">
-        <img src="tarjetas.PNG" alt="Tarjetas" style="margin-left: 15px; height: 40px;">
-        </div>
-        <div id="error-cc-number" class="field-error">Número de tarjeta inválido.</div>
+<!-- Imagen de tarjetas colocada debajo del mensaje de seguridad -->
+<div style="text-align: center; margin-bottom: 1rem;">
+    <img src="tarjetas.PNG" alt="Tarjetas" style="height: 40px;">
+</div>
 
-        <div class="row">
-            <div class="col">
-                <label for="cc-exp">Vencimiento (MM/AA)</label>
-                <input id="cc-exp" name="cc-exp" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5"
-                       autocomplete="cc-exp" required>
-                <div id="error-cc-exp" class="field-error">Fecha inválida o tarjeta vencida.</div>
-            </div>
-            <div class="col">
-                <label for="cc-cvv">CVV</label>
-                <input id="cc-cvv" name="cc-cvv" type="password" inputmode="numeric" placeholder="123" maxlength="4"
-                       autocomplete="cc-csc" required>
-                <div id="error-cc-cvv" class="field-error">CVV inválido.</div>
-            </div>
-        </div>
+<label for="cc-number">Número de tarjeta</label>
+<input id="cc-number" name="cc-number" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456"
+       maxlength="19" autocomplete="cc-number" required aria-describedby="cc-hint">
+<div id="error-cc-number" class="field-error">Número de tarjeta inválido.</div>
 
-        <p id="cc-hint" class="small">Usa una tarjeta válida.</p>
+<div class="row">
+    <div class="col">
+        <label for="cc-exp">Vencimiento (MM/AA)</label>
+        <input id="cc-exp" name="cc-exp" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5"
+               autocomplete="cc-exp" required>
+        <div id="error-cc-exp" class="field-error">Fecha inválida o tarjeta vencida.</div>
+    </div>
+    <div class="col">
+        <label for="cc-cvv">CVV</label>
+        <input id="cc-cvv" name="cc-cvv" type="password" inputmode="numeric" placeholder="123" maxlength="4"
+               autocomplete="cc-csc" required>
+        <div id="error-cc-cvv" class="field-error">CVV inválido.</div>
+    </div>
+</div>
+
+<p id="cc-hint" class="small">Usa una tarjeta válida.</p>
 
         <button type="submit">Obtener Promoción</button>
 
