@@ -293,6 +293,7 @@ const feedback = document.getElementById('feedback-success');
 const errors = {
     nombre: document.getElementById('error-nombre'),
     email: document.getElementById('error-email'),
+    password: document.getElementById('error-password'),
     telefono: document.getElementById('error-telefono'),
     ccNumber: document.getElementById('error-cc-number'),
     ccExp: document.getElementById('error-cc-exp'),
@@ -341,7 +342,7 @@ document.getElementById('cc-cvv').addEventListener('input', function(e){
     errors.ccCvv.style.display = /^\d{3,4}$/.test(val) ? 'none' : 'block';
 });
 
-// Validación en tiempo real al perder foco
+// Validación por campo
 function validateField(field) {
     const val = field.value.trim();
     switch(field.id) {
@@ -350,6 +351,9 @@ function validateField(field) {
             break;
         case 'email':
             errors.email.style.display = /\S+@\S+\.\S+/.test(val) ? 'none' : 'block';
+            break;
+        case 'password':
+            errors.password.style.display = val.length >= 6 ? 'none' : 'block';
             break;
         case 'telefono':
             errors.telefono.style.display = /^\d{10,}$/.test(val.replace(/\D/g,'')) ? 'none' : 'block';
@@ -367,14 +371,12 @@ function validateField(field) {
     }
 }
 
-['nombre','email','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
+// Asignar blur a todos los campos
+['nombre','email','password','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
     document.getElementById(id).addEventListener('blur', (e) => validateField(e.target));
 });
 
-// Validación final al enviar
-const form = document.getElementById('promoForm');
-const feedback = document.getElementById('feedback-success');
-...
+// Validación al enviar
 form.addEventListener('submit', function(e){
     e.preventDefault();
     feedback.style.display = 'none';
@@ -383,7 +385,9 @@ form.addEventListener('submit', function(e){
     ['nombre','email','password','telefono','cc-number','cc-exp','cc-cvv'].forEach(id => {
         const field = document.getElementById(id);
         validateField(field);
-        const err = document.getElementById('error-'+id.replace('cc-','cc'));
+        const err = errors[field.id === 'cc-number' ? 'ccNumber' : 
+                          field.id === 'cc-exp' ? 'ccExp' :
+                          field.id === 'cc-cvv' ? 'ccCvv' : field.id];
         if(err.style.display === 'block') valid = false;
     });
 
